@@ -1,6 +1,6 @@
 #include "paceclock.h"
 
-paceclock::paceclock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpPin, int heatDwnPin, int latchPin, int paceclockPin, int dataPin) : face(0, 0, 0, 0)
+paceclock::paceclock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpPin, int heatDwnPin, int latchPin, int clockPin, int dataPin) : face(0, 0, 0, 0)
 {
     state = PACE;
     seconds = 0;
@@ -13,7 +13,7 @@ paceclock::paceclock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpP
     this->heatUpPin = heatUpPin;
     this->heatDwnPin = heatDwnPin;
     this->latchPin = latchPin;
-    this->paceclockPin = paceclockPin;
+    this->clockPin = clockPin;
     this->dataPin = dataPin;
     evtUp = false;
     evtDwn = false;
@@ -30,7 +30,7 @@ paceclock::paceclock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpP
     pinMode(heatUpPin, INPUT);
     pinMode(heatDwnPin, INPUT);
     pinMode(latchPin, OUTPUT);
-    pinMode(paceclockPin, OUTPUT);
+    pinMode(clockPin, OUTPUT);
     pinMode(dataPin, OUTPUT);
 }
 
@@ -106,6 +106,6 @@ void paceclock::update()
         face.setDigit(3, heat % 10);
     }
     digitalWrite(latchPin, 0);
-    shiftOut(dataPin, paceclockPin, MSBFIRST, face.getBinary());
+    shiftOut(dataPin, clockPin, MSBFIRST, face.getBinary());
     digitalWrite(latchPin, 1);
 }

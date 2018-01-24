@@ -23,7 +23,7 @@
             int evtDwnPin;
             int heatUpPin;
             int heatDwnPin;
-            int paceclockPin;
+            int clockPin;
             int dataPin;
             int latchPin;
             bool evtUp;
@@ -38,7 +38,7 @@
             void checkButtons();
             clockface face;
         public:
-            paceclock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpPin, int heatDwnPin, int latchPin, int paceclockPin, int dataPin);
+            paceclock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpPin, int heatDwnPin, int latchPin, int clockPin, int dataPin);
             ~paceclock();
             void update();
     };
