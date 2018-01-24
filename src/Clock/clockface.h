@@ -1,6 +1,8 @@
 #ifndef CLOCKFACE_H
 #define CLOCKFACE_H
 
+#include "Arduino.h"
+
     class clockface
     {
         private:

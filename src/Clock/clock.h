@@ -1,6 +1,7 @@
 #ifndef CLOCK_H
 #define CLOCK_H
 
+#include "Arduino.h"
 #include "clockface.h"
 
     typedef enum clockstate
