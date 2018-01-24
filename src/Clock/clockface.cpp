@@ -1,6 +1,6 @@
 #include "clockface.h"
 
-clockface::clockface(byte digit1, byte digit2, byte digit3, byte digit4)
+clockface::clockface(int digit1, int digit2, int digit3, int digit4)
 {
     digits[0] = digit1;
     digits[1] = digit2;

@@ -6,9 +6,9 @@
     class clockface
     {
         private:
-            byte digits[4];
+            int digits[4];
         public:
-            clockface(byte digit1, byte digit2, byte digit3, byte digit4);
+            clockface(int digit1, int digit2, int digit3, int digit4);
             unsigned long getBinary();
     };
 

@@ -14,10 +14,10 @@
     {
         private:
             clockstate state; 
-            byte seconds;
-            byte minutes;
-            byte event;
-            byte heat;
+            int seconds;
+            int minutes;
+            int event;
+            int heat;
             int modeSwitchPin;
             int evtUpPin;
             int evtDwnPin;
