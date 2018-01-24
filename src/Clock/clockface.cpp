@@ -23,3 +23,10 @@ unsigned long clockface::getBinary()
     }
     return ~ result;
 }
+
+void clockface::setDigit(int index, int value)
+{
+    if(index < 0 || index > 3)
+        return;
+    digits[index] = value;
+}

@@ -78,7 +78,10 @@ void clock::update()
                 minutes = 0;
             }
         }
-        face(minutes / 10, minutes % 10, seocnds / 10, seconds % 10);
+        face.setDigit(0, minutes / 10);
+        face.setDigit(1, minutes % 10);
+        face.setDigit(2, seconds / 10);
+        face.setDigit(3, seconds % 10);
         delay(1000);
     }
     
@@ -97,7 +100,10 @@ void clock::update()
             event = 1;
         if(heat < 1 || heat >= 60)
             heat = 1;
-        face(event / 10, event % 10, heat / 10, heat % 10);
+        face.setDigit(0, event / 10);
+        face.setDigit(1, event % 10);
+        face.setDigit(2, heat / 10);
+        face.setDigit(3, heat % 10);
     }
     digitalWrite(latchPin, 0);
     shiftOut(dataPin, clockPin, MSBFIRST, clock.getBinary());
