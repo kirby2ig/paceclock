@@ -10,7 +10,7 @@ clockface::clockface(int digit1, int digit2, int digit3, int digit4)
 
 unsigned long clockface::getBinary()
 {
-    unsigned long digtBins[] = {119, 18, 93, 91, 58, 107, 111, 82, 127, 122};
+    unsigned long digitBins[] = {119, 18, 93, 91, 58, 107, 111, 82, 127, 122};
     unsigned long result = 0;
     for(int i = 0; i < 4; i++)
     {

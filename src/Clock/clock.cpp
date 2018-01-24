@@ -53,7 +53,7 @@ void clock::checkButtons()
     
     evtUp = evtUpRead && !lastEvtUp;
     evtDwn = evtDwnRead && !lastEvtDwn;
-    heatUp = heatUpRead && !lastHEatUp;
+    heatUp = heatUpRead && !lastHeatUp;
     heatDwn = heatDwnRead && !lastHeatDwn;
     
     lastEvtUp = evtUpRead;
@@ -96,7 +96,7 @@ void clock::update()
             heat++;
         if(heatDwn && !heatUp)
             heat--;
-        if(event < 1 || evt >= 60)
+        if(event < 1 || event >= 60)
             event = 1;
         if(heat < 1 || heat >= 60)
             heat = 1;
@@ -106,6 +106,6 @@ void clock::update()
         face.setDigit(3, heat % 10);
     }
     digitalWrite(latchPin, 0);
-    shiftOut(dataPin, clockPin, MSBFIRST, clock.getBinary());
+    shiftOut(dataPin, clockPin, MSBFIRST, face.getBinary());
     digitalWrite(latchPin, 1);
 }
