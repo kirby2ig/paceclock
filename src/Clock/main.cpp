@@ -1,6 +1,6 @@
-#include "clock.h"
+#include "paceclock.h"
 
-clock(2, 3, 4, 5, 6, 8, 12, 11);
+paceclock pc(2, 3, 4, 5, 6, 8, 12, 11);
 
 void setup()
 {
@@ -9,5 +9,5 @@ void setup()
 
 void loop()
 {
-    clock.update();
+    pc.update();
 }

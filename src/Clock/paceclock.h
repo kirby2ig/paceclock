@@ -1,19 +1,19 @@
-#ifndef CLOCK_H
-#define CLOCK_H
+#ifndef PACECLOCK_H
+#define PACECLOCK_H
 
 #include "Arduino.h"
 #include "clockface.h"
 
-    typedef enum clockstate
+    typedef enum paceclockstate
     {
         PACE,
         MEET
-    } clockstate;
+    } paceclockstate;
 
-    class clock
+    class paceclock
     {
         private:
-            clockstate state; 
+            paceclockstate state; 
             int seconds;
             int minutes;
             int event;
@@ -23,7 +23,7 @@
             int evtDwnPin;
             int heatUpPin;
             int heatDwnPin;
-            int clockPin;
+            int paceclockPin;
             int dataPin;
             int latchPin;
             bool evtUp;
@@ -38,8 +38,8 @@
             void checkButtons();
             clockface face;
         public:
-            clock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpPin, int heatDwnPin, int latchPin, int clockPin, int dataPin);
-            ~clock();
+            paceclock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpPin, int heatDwnPin, int latchPin, int paceclockPin, int dataPin);
+            ~paceclock();
             void update();
     };
 

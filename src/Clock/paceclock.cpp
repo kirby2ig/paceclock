@@ -1,6 +1,6 @@
-#include "clock.h"
+#include "paceclock.h"
 
-clock::clock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpPin, int heatDwnPin, int latchPin, int clockPin, int dataPin) : face(0, 0, 0, 0)
+paceclock::paceclock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpPin, int heatDwnPin, int latchPin, int paceclockPin, int dataPin) : face(0, 0, 0, 0)
 {
     state = PACE;
     seconds = 0;
@@ -13,7 +13,7 @@ clock::clock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpPin, int 
     this->heatUpPin = heatUpPin;
     this->heatDwnPin = heatDwnPin;
     this->latchPin = latchPin;
-    this->clockPin = clockPin;
+    this->paceclockPin = paceclockPin;
     this->dataPin = dataPin;
     evtUp = false;
     evtDwn = false;
@@ -30,21 +30,21 @@ clock::clock(int modeSwitchPin, int evtUpPin, int evtDwnPin, int heatUpPin, int 
     pinMode(heatUpPin, INPUT);
     pinMode(heatDwnPin, INPUT);
     pinMode(latchPin, OUTPUT);
-    pinMode(clockPin, OUTPUT);
+    pinMode(paceclockPin, OUTPUT);
     pinMode(dataPin, OUTPUT);
 }
 
-clock::~clock()
+paceclock::~paceclock()
 {
     
 }
 
-void clock::checkState()
+void paceclock::checkState()
 {
     state = digitalRead(modeSwitchPin);
 }
 
-void clock::checkButtons()
+void paceclock::checkButtons()
 {
     bool evtUpRead = digitalRead(evtUpPin);
     bool evtDwnRead = digitalRead(evtDwnPin);
@@ -62,7 +62,7 @@ void clock::checkButtons()
     lastHeatDwn = heatDwnRead;
 }
 
-void clock::update()
+void paceclock::update()
 {
     checkState();
     
@@ -106,6 +106,6 @@ void clock::update()
         face.setDigit(3, heat % 10);
     }
     digitalWrite(latchPin, 0);
-    shiftOut(dataPin, clockPin, MSBFIRST, face.getBinary());
+    shiftOut(dataPin, paceclockPin, MSBFIRST, face.getBinary());
     digitalWrite(latchPin, 1);
 }
