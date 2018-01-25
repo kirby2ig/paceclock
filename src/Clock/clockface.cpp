@@ -18,8 +18,7 @@ unsigned long clockface::getBinary()
         unsigned long digitBin;
         int digit = digits[i];
         digitBin = digitBins[digit];
-        digitBin << shift;
-        result |= digitBin;
+        result |= digitBin << shift;
     }
     return ~ result;
 }

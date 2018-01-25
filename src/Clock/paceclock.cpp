@@ -41,7 +41,7 @@ paceclock::~paceclock()
 
 void paceclock::checkState()
 {
-    state = digitalRead(modeSwitchPin);
+    state = (paceclockstate) digitalRead(modeSwitchPin);
 }
 
 void paceclock::checkButtons()
